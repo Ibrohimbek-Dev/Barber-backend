@@ -1,0 +1,35 @@
+{
+  "files": {
+    "main.css": "/static/css/main.2c12f020.css",
+    "main.js": "/static/js/main.8882deed.js",
+    "static/css/5.65de7fa5.chunk.css": "/static/css/5.65de7fa5.chunk.css",
+    "static/js/5.e70c2f8f.chunk.js": "/static/js/5.e70c2f8f.chunk.js",
+    "static/css/460.63f91b8f.chunk.css": "/static/css/460.63f91b8f.chunk.css",
+    "static/js/460.29f0684a.chunk.js": "/static/js/460.29f0684a.chunk.js",
+    "static/css/671.40d9d2ec.chunk.css": "/static/css/671.40d9d2ec.chunk.css",
+    "static/js/671.44516719.chunk.js": "/static/js/671.44516719.chunk.js",
+    "static/css/747.5f46dc0e.chunk.css": "/static/css/747.5f46dc0e.chunk.css",
+    "static/js/747.afd168ee.chunk.js": "/static/js/747.afd168ee.chunk.js",
+    "static/css/808.af5a471a.chunk.css": "/static/css/808.af5a471a.chunk.css",
+    "static/js/808.0ef448c2.chunk.js": "/static/js/808.0ef448c2.chunk.js",
+    "static/js/233.f75cb235.chunk.js": "/static/js/233.f75cb235.chunk.js",
+    "index.html": "/index.html",
+    "main.2c12f020.css.map": "/static/css/main.2c12f020.css.map",
+    "main.8882deed.js.map": "/static/js/main.8882deed.js.map",
+    "5.65de7fa5.chunk.css.map": "/static/css/5.65de7fa5.chunk.css.map",
+    "5.e70c2f8f.chunk.js.map": "/static/js/5.e70c2f8f.chunk.js.map",
+    "460.63f91b8f.chunk.css.map": "/static/css/460.63f91b8f.chunk.css.map",
+    "460.29f0684a.chunk.js.map": "/static/js/460.29f0684a.chunk.js.map",
+    "671.40d9d2ec.chunk.css.map": "/static/css/671.40d9d2ec.chunk.css.map",
+    "671.44516719.chunk.js.map": "/static/js/671.44516719.chunk.js.map",
+    "747.5f46dc0e.chunk.css.map": "/static/css/747.5f46dc0e.chunk.css.map",
+    "747.afd168ee.chunk.js.map": "/static/js/747.afd168ee.chunk.js.map",
+    "808.af5a471a.chunk.css.map": "/static/css/808.af5a471a.chunk.css.map",
+    "808.0ef448c2.chunk.js.map": "/static/js/808.0ef448c2.chunk.js.map",
+    "233.f75cb235.chunk.js.map": "/static/js/233.f75cb235.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2c12f020.css",
+    "static/js/main.8882deed.js"
+  ]
+}
