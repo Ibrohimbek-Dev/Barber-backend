@@ -1,64 +1,61 @@
+const fs = require("fs");
+const path = require("path");
+
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
-const fs = require("fs");
-const path = require("path");
+
+const placesRoutes = require("./routes/places-routes");
+const usersRoutes = require("./routes/users-routes");
+const HttpError = require("./models/http-error");
 
 const app = express();
 
 app.use(bodyParser.json());
 
-// Serve static files
 app.use("/uploads/images", express.static(path.join("uploads", "images")));
-app.use(express.static(path.join("public")));
 
-// Routes
-const placesRoutes = require("./routes/places-routes");
-const usersRoutes = require("./routes/users-routes");
+app.use((req, res, next) => {
+	res.setHeader("Access-Control-Allow-Origin", "*");
+	res.setHeader(
+		"Access-Control-Allow-Headers",
+		"Origin, X-Requested-With, Content-Type, Accept, Authorization"
+	);
+	res.setHeader("Access-Control-Allow-Methods", "GET, POST, PATCH, DELETE");
+
+	next();
+});
 
 app.use("/api/places", placesRoutes);
 app.use("/api/users", usersRoutes);
 
-// Serve React frontend
-if (process.env.NODE_ENV === "production") {
-	app.use(express.static(path.join(__dirname, "frontend", "build")));
+app.use((req, res, next) => {
+	const error = new HttpError("Could not find this route.", 404);
+	throw error;
+});
 
-	app.get("*", (req, res) => {
-		res.sendFile(path.join(__dirname, "frontend", "build", "index.html"));
-	});
-}
-
-// Error handling middleware
 app.use((error, req, res, next) => {
 	if (req.file) {
 		fs.unlink(req.file.path, (err) => {
-			console.log("Error cleaning up file:", err);
+			console.log(err);
 		});
 	}
-
-	if (res.headersSent) {
+	if (res.headerSent) {
 		return next(error);
 	}
-
-	res
-		.status(error.code || 500)
-		.json({ message: error.message || "An unknown error occurred!" });
+	res.status(error.code || 500);
+	res.json({ message: error.message || "An unknown error occurred!" });
 });
 
-// Database connection and server start
 mongoose
-	.connect(process.env.MONGO_URL, {
-		useNewUrlParser: true,
-		useUnifiedTopology: true,
-		useCreateIndex: true,
-	})
+	.connect(
+		`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.nqsvctw.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`
+	)
 	.then(() => {
-		console.log("Connected to MongoDB");
-		const port = process.env.PORT || 5000;
-		app.listen(port, () => {
-			console.log(`Server is running on port ${port}`);
-		});
+		app.listen(process.env.PORT || 5000);
+
+		console.log("PORT: " + process.env.PORT)
 	})
-	.catch((error) => {
-		console.error("MongoDB connection error:", error);
+	.catch((err) => {
+		console.log(err);
 	});
