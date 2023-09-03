@@ -29,8 +29,8 @@ const signup = async (req, res, next) => {
 		);
 	}
 
-	// Extract data from request body
-	const { name, email, password } = req.body;
+	// Extract data from request body	
+	const { name, email, password, phone } = req.body;
 
 	// Check if a user with the same email already exists
 	let existingUser;
@@ -71,7 +71,9 @@ const signup = async (req, res, next) => {
 		image: req.file.path,
 		password: hashedPassword,
 		places: [],
+		phone,
 	});
+	
 
 	try {
 		await createdUser.save();
