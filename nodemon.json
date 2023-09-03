@@ -2,8 +2,7 @@
 	"env": {
 		"DB_USER": "CodeDev",
 		"DB_PASSWORD": "alisherov0127",
-		"DB_NAME": "barber-shop",
-		"GOOGLE_MAP_API_KEY": "https://nominatim.openstreetmap.org",
+		"DB_NAME": "barber-shop",		
 		"JWT_KEY": "supersecret_dont_share"
 	}
 }
